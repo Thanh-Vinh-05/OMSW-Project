@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f5ff;
+  color: #333;
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e6f0ff;   /* nền xanh nhạt */
+  padding: 15px 60px;
+}
+
+/* Logo */
+.logo img {
+  height: 40px;
+  width: auto;
+  background: #fff;       /* nền trắng */
+  padding: 10px;
+  border-radius: 50px;    /* bo tròn */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Menu */
+.menu {
+  flex: 1;
+  text-align: center;
+}
+.menu a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.menu a:hover {
+  color: #007bff;
+}
+
+/* Buttons */
+.auth-buttons {
+  display: flex;
+  gap: 15px;
+}
+.auth-buttons .btn {
+  padding: 8px 20px;
+  border-radius: 25px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn.login {
+  background: #0d6efd;
+  color: #fff;
+}
+.btn.signup {
+  background: #0d6efd;
+  color: #fff;
+}
+.auth-buttons .btn:hover {
+  background: #0056d2;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px;
+  gap: 40px;
+}
+.hero-left {
+  flex: 1;
+  max-width: 50%;
+}
+.hero-left h1 {
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.hero-left p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+.customers {
+  display: flex;
+  align-items: center;
+}
+.customers img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-right: -10px;
+}
+.customers span {
+  margin-left: 20px;
+  font-size: 14px;
+  color: #d33;
+}
+
+/* Hero Right (Poster) */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.hero-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .hero-left, .hero-right {
+    max-width: 100%;
+  }
+  .customers {
+    justify-content: center;
+  }
+}
