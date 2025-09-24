@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicine Shopping Dashboard</title>
+  <link rel="stylesheet" href="/FE/src/css/dashboard.css">
+
+</head>
+<body>
+  <div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="assets/logo.png" alt="MSW Logo">
+        <h2>MSW</h2>
+      </div>
+      <ul class="menu">
+        <li class="active">📊 Bảng điều khiển</li>
+        <li>🔔 Tất cả thông báo</li>
+        <li>💬 Tin nhắn <span class="badge">3</span></li>
+        <li>🏥 Hồ sơ nhà thuốc</li>
+        <li>⚙️ Cài đặt</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Search + Header -->
+      <header class="header">
+        <input type="text" placeholder="Tìm kiếm...">
+        <button class="btn">+ Thêm</button>
+      </header>
+
+      <!-- Welcome Banner -->
+      <section class="welcome">
+        <h3>Chào mừng trở lại, Dược sĩ An 👩‍⚕️</h3>
+        <p>Hôm nay là Thứ Sáu, ngày 13/09/2025.  
+           Bạn có <b>15 đơn hàng mới</b> và <b>3 tin nhắn</b> đang chờ xử lý.</p>
+      </section>
+
+      <!-- Info Cards -->
+      <section class="cards">
+        <div class="card weather">
+          <h4>Doanh thu hôm nay</h4>
+          <p>16°C 🌧 Rain</p>
+          <span>Austin, TX (USA)</span>
+        </div>
+        <div class="card activity">
+          <h4>Hoạt động mới nhất</h4>
+          <ul>
+            <li>Dược sĩ Minh Anh đã xác nhận đơn hàng #89321</li>
+            <li>Nhân viên kho đã cập nhật tồn kho sản phẩm Panadol</li>
+            <li>Dược sĩ Bích Trâm đã trả lời tin nhắn khách hàng</li>
+          </ul>
+        </div>
+        <div class="card note">
+          <h4>Ghi chú nhanh</h4>
+          <textarea placeholder="Viết ghi chú..."></textarea>
+          <button class="btn">Lưu lại</button>
+        </div>
+      </section>
+
+      <!-- Products + Ratings -->
+      <section class="products">
+        <div class="card highlight">
+          <h4>Sản phẩm bán chạy nhất tuần</h4>
+          <p>Vitamin C 1000mg – hỗ trợ miễn dịch, tăng cường sức khỏe.</p>
+          <small>By Julia Grey</small>
+        </div>
+        <div class="card ratings">
+          <h4>Đánh giá mới từ khách hàng</h4>
+          <ul>
+            <li><span>7.2</span> Nước muối sinh lý Physiodose <button>Xem</button></li>
+            <li><span>9.1</span> Vitamin tổng hợp Multivitamin <button>Xem</button></li>
+            <li><span>7.9</span> Men vi sinh Bio-acimin <button>Xem</button></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="rightbar">
+      <div class="profile">
+        <img src="https://via.placeholder.com/80" alt="profile">
+        <h4>Nguyễn Thị An</h4>
+        <p>Dược sĩ phụ trách</p>
+        <button class="logout">Đăng xuất</button>
+      </div>
+      <div class="stats">
+        <p>📝 Tổng đơn hàng: <b>126</b></p>
+        <p>📦 Đơn chờ xử lý: <b>15</b></p>
+      </div>
+      <div class="alerts">
+        <h4>Cảnh báo mới nhất</h4>
+        <ul>
+          <li>📦 Đơn hàng mới #89321</li>
+          <li>⚠️ Sản phẩm "Becozym" sắp hết</li>
+          <li>💬 Khách hàng hỏi tư vấn Vitamin C</li>
+          <li>✅ Giao hàng thành công đơn #89220</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+    <script defer src="/FE/src/js/dashboard.js"></script>
+</body>
+</html>

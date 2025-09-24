@@ -106,16 +106,187 @@ body {
 
 /* Hero Right (Poster) */
 .hero-right {
-  flex: 1;
+  flex: 0.8;
   display: flex;
   justify-content: center;
 }
 .hero-card img {
-  max-width: 100%;
+  max-width: 600px;   /* không vượt quá 600px */
+  max-height: 600px;
+  width: 100%;        /* chiếm toàn bộ container nếu nhỏ hơn max */
   height: auto;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  object-fit: cover;
 }
+
+/* Ưu đãi */
+.promo {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  padding: 30px 60px;
+}
+
+.promo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;   /* khoảng cách giữa icon và text */
+  max-width: 220px;
+}
+
+.promo-item img {
+  width: 40px;       /* kích thước cố định */
+  height: 40px;      /* giữ cùng chiều cao */
+  object-fit: contain; /* giữ tỉ lệ, không bị méo */
+  flex-shrink: 0;    /* không cho ảnh co lại */
+}
+
+.promo-item h3 {
+  font-size: 16px;
+  margin: 0;
+  color: #000;
+}
+
+.promo-item p {
+  font-size: 13px;
+  margin: 3px 0 0;
+  color: #666;
+}
+
+
+/* Khuyến mãi */
+.discount {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 60px;
+  gap: 20px;
+  background-color: #fff;
+}
+
+.discount-box {
+  flex: 1;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+/* Box trái */
+.discount-box.left {
+  flex-direction: row; /* chữ trái, ảnh phải */
+}
+.discount-text h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+.discount-text p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #000;
+}
+.discount-text .highlight {
+  color: #0d6efd;
+}
+.discount-text small {
+  color: #555;
+}
+.discount-img {
+  width: 250px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Box xanh bên phải */
+.discount-box.blue {
+  background: #0d6efd;
+  color: #fff;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 30px 25px;
+}
+.discount-box.blue p {
+  margin: 0 0 15px;
+  font-size: 14px;
+}
+.discount-box.blue h1 {
+  font-size: 36px;
+  margin: 0 0 20px;
+}
+.discount-box.blue button {
+  background: #fff;
+  color: #0d6efd;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.discount-box.blue button:hover {
+  background: #e6e6e6;
+}
+
+
+/* Sản phẩm */
+.products { padding: 40px; }
+.product-list {
+  display: flex;
+  gap: 20px;
+}
+.product-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  flex: 1;
+}
+.product-card img { width: 100%; border-radius: 8px; }
+.price .old { text-decoration: line-through; color: gray; }
+
+/* Thương hiệu */
+.brands { padding: 40px; background: #f9f9f9; }
+.brand-list {
+  display: flex;
+  gap: 20px;
+}
+
+/* Cam kết */
+.quality { padding: 40px; }
+.quality ul { list-style: none; padding: 0; }
+.quality li { margin: 10px 0; }
+
+/* Dịch vụ */
+.services {
+  background: #0d6efd;
+  color: #fff;
+  padding: 40px;
+}
+.service-list {
+  display: flex;
+  gap: 20px;
+}
+.service-card {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+  color: #0d6efd;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  background: #0d6efd;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+}
+.footer-col h3 { margin-bottom: 10px; }
 
 /* Responsive */
 @media (max-width: 992px) {

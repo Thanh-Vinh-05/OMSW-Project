@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediShop - Nhà Thuốc Online</title>
+    <link rel="stylesheet" href="/FE/src/css/medicine_shopping.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-pills"></i>
+                <h1>MediShop</h1>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm thuốc...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <!-- Cart -->
+            <div class="cart-icon" id="cartToggle">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Filter -->
+    <section class="category-section">
+        <div class="container">
+            <h3>Danh mục thuốc</h3>
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">Tất cả</button>
+                <button class="category-btn" data-category="pain-relief">Giảm đau</button>
+                <button class="category-btn" data-category="antibiotic">Kháng sinh</button>
+                <button class="category-btn" data-category="vitamin">Vitamin</button>
+                <button class="category-btn" data-category="cold-flu">Cảm cúm</button>
+                <button class="category-btn" data-category="digestive">Tiêu hóa</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Products Grid -->
+            <section class="products-section">
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Cart Sidebar -->
+            <aside class="cart-sidebar" id="cartSidebar">
+                <div class="cart-header">
+                    <h3>Giỏ hàng</h3>
+                    <button class="close-cart" id="closeCart">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total">
+                        <strong>Tổng cộng: <span id="cartTotal">0₫</span></strong>
+                    </div>
+                    <button class="checkout-btn">Thanh toán</button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Chi tiết thuốc</h3>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <h4 id="modalName"></h4>
+                    <p class="modal-price" id="modalPrice"></p>
+                    <div class="modal-details">
+                        <div class="detail-section">
+                            <h5>Thành phần</h5>
+                            <p id="modalIngredients"></p>
+                        </div>
+                        <div class="detail-section">
+                            <h5>Công dụng</h5>
+                            <p id="modalUses"></p>
+                        </div>
+                        <div class="detail-section">
+                            <h5>Liều dùng</h5>
+                            <p id="modalDosage"></p>
+                        </div>
+                        <div class="detail-section">
+                            <h5>Danh mục</h5>
+                            <p id="modalCategory"></p>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <div class="quantity-control">
+                            <button class="qty-btn" id="decreaseQty">-</button>
+                            <span class="qty-display" id="qtyDisplay">1</span>
+                            <button class="qty-btn" id="increaseQty">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" id="addToCartModal">
+                            <i class="fas fa-cart-plus"></i>
+                            Thêm vào giỏ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <script src="/FE/src/js/medicine_shopping.js"></script>
+</body>
+</html>
