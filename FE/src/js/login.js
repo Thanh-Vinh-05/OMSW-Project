@@ -1,211 +1,149 @@
-let users = [
-            {
-                email: "jonas.kahnwald@gmail.com",
-                password: "123456",
-                fullName: "Jonas Kahnwald"
-            },
-            {
-                email: "admin@msw.com",
-                password: "admin123",
-                fullName: "Admin MSW"
-            }
-        ];
+// login.js
 
-        // Toggle hiển thị mật khẩu
-        function togglePassword() {
-            const passwordField = document.getElementById('password');
-            const toggleIcon = document.querySelector('.password-toggle');
-            
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                toggleIcon.textContent = '🙈';
-            } else {
-                passwordField.type = 'password';
-                toggleIcon.textContent = '👁️';
-            }
-        }
+// Mảng giả lập user với role
+const users = [
+  { email: 'admin@example.com', password: 'admin123', role: 'admin' },
+  { email: 'customer@example.com', password: 'customer123', role: 'customer' }
+];
 
-        function toggleRegisterPassword() {
-            const passwordField = document.getElementById('registerPassword');
-            const toggleIcon = passwordField.nextElementSibling;
-            
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                toggleIcon.textContent = '🙈';
-            } else {
-                passwordField.type = 'password';
-                toggleIcon.textContent = '👁️';
-            }
-        }
+// Toggle password visibility for login form
+function togglePassword() {
+  const passwordInput = document.getElementById('password');
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
+}
 
-        function toggleConfirmPassword() {
-            const passwordField = document.getElementById('confirmPassword');
-            const toggleIcon = passwordField.nextElementSibling;
-            
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                toggleIcon.textContent = '🙈';
-            } else {
-                passwordField.type = 'password';
-                toggleIcon.textContent = '👁️';
-            }
-        }
+// Toggle password visibility for register form
+function toggleRegisterPassword() {
+  const passwordInput = document.getElementById('registerPassword');
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
+}
 
-        // Hiển thị thông báo lỗi
-        function showError(elementId, message) {
-            const errorElement = document.getElementById(elementId);
-            errorElement.textContent = message;
-            errorElement.style.display = 'block';
-            setTimeout(() => {
-                errorElement.style.display = 'none';
-            }, 5000);
-        }
+function toggleConfirmPassword() {
+  const passwordInput = document.getElementById('confirmPassword');
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
+}
 
-        // Hiển thị thông báo thành công
-        function showSuccess(elementId, message) {
-            const successElement = document.getElementById(elementId);
-            successElement.textContent = message;
-            successElement.style.display = 'block';
-            setTimeout(() => {
-                successElement.style.display = 'none';
-            }, 5000);
-        }
+// Show register form and hide login form
+function showRegisterForm() {
+  document.getElementById('loginForm').style.display = 'none';
+  document.getElementById('registerForm').style.display = 'block';
+  clearMessages();
+}
 
-        // Xử lý đăng nhập
-        document.getElementById('loginFormElement').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // Kiểm tra email và password
-            const user = users.find(u => u.email === email && u.password === password);
-            
-            if (user) {
-                showSuccess('successMessage', `Đăng nhập thành công! Chào mừng ${user.fullName}`);
-                // Trong thực tế, sẽ chuyển hướng đến trang chủ
-                setTimeout(() => {
-                    alert('Chuyển hướng đến trang chủ...');
-                }, 2000);
-            } else {
-                // Kiểm tra email có tồn tại không
-                const emailExists = users.find(u => u.email === email);
-                if (emailExists) {
-                    showError('errorMessage', 'Mật khẩu không chính xác. Vui lòng thử lại.');
-                } else {
-                    showError('errorMessage', 'Email không tồn tại trong hệ thống. Vui lòng đăng ký tài khoản mới.');
-                }
-            }
-        });
+// Show login form and hide register form
+function showLoginForm() {
+  document.getElementById('registerForm').style.display = 'none';
+  document.getElementById('loginForm').style.display = 'block';
+  clearMessages();
+}
 
-        // Xử lý đăng ký
-        document.getElementById('registerFormElement').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            
-            // Kiểm tra email đã tồn tại
-            const emailExists = users.find(u => u.email === email);
-            if (emailExists) {
-                showError('registerErrorMessage', 'Email đã tồn tại trong hệ thống. Vui lòng sử dụng email khác.');
-                return;
-            }
-            
-            // Kiểm tra mật khẩu
-            if (password.length < 6) {
-                showError('registerErrorMessage', 'Mật khẩu phải có ít nhất 6 ký tự.');
-                return;
-            }
-            
-            if (password !== confirmPassword) {
-                showError('registerErrorMessage', 'Mật khẩu xác nhận không khớp.');
-                return;
-            }
-            
-            // Thêm user mới
-            users.push({
-                email: email,
-                password: password,
-                fullName: fullName
-            });
-            
-            showSuccess('registerSuccessMessage', 'Đăng ký thành công! Chuyển về form đăng nhập...');
-            
-            // Reset form và chuyển về form đăng nhập
-            setTimeout(() => {
-                document.getElementById('registerFormElement').reset();
-                showLoginForm();
-                // Tự động điền email vào form đăng nhập
-                document.getElementById('email').value = email;
-                showSuccess('successMessage', 'Tài khoản đã được tạo thành công. Vui lòng đăng nhập.');
-            }, 2000);
-        });
+function clearMessages() {
+  document.getElementById('errorMessage').textContent = '';
+  document.getElementById('successMessage').textContent = '';
+  document.getElementById('registerErrorMessage').textContent = '';
+  document.getElementById('registerSuccessMessage').textContent = '';
+}
 
-        // Chuyển đổi giữa form đăng nhập và đăng ký
-        function showRegisterForm() {
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('registerForm').style.display = 'block';
-        }
+// Xử lý đăng nhập với phân biệt role
+document.getElementById('loginFormElement').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const email = this.email.value.trim();
+  const password = this.password.value.trim();
+  const errorMessage = document.getElementById('errorMessage');
+  const successMessage = document.getElementById('successMessage');
 
-        function showLoginForm() {
-            document.getElementById('registerForm').style.display = 'none';
-            document.getElementById('loginForm').style.display = 'block';
-        }
+  errorMessage.textContent = '';
+  successMessage.textContent = '';
 
-        // Đăng nhập với Google (demo)
-        function loginWithGoogle() {
-            alert('Tính năng đăng nhập với Google sẽ được triển khai sau. Hiện tại vui lòng sử dụng email và mật khẩu.');
-        }
+  if (!email || !password) {
+    errorMessage.textContent = 'Vui lòng nhập đầy đủ thông tin.';
+    return;
+  }
 
-        function registerWithGoogle() {
-            alert('Tính năng đăng ký với Google sẽ được triển khai sau. Hiện tại vui lòng điền thông tin thủ công.');
-        }
+  // Tìm user trong mảng giả lập
+  const user = users.find(u => u.email === email && u.password === password);
 
-        // Thêm hiệu ứng loading khi submit form
-        function addLoadingEffect(formElement, buttonElement) {
-            const originalText = buttonElement.textContent;
-            buttonElement.textContent = 'Đang xử lý...';
-            buttonElement.disabled = true;
-            
-            setTimeout(() => {
-                buttonElement.textContent = originalText;
-                buttonElement.disabled = false;
-            }, 1000);
-        }
+  if (!user) {
+    errorMessage.textContent = 'Email hoặc mật khẩu không đúng.';
+    return;
+  }
 
-        // Animation khi chuyển form
-        function animateFormTransition() {
-            const container = document.querySelector('.form-container');
-            container.style.opacity = '0';
-            container.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                container.style.transition = 'all 0.3s ease';
-                container.style.opacity = '1';
-                container.style.transform = 'translateY(0)';
-            }, 100);
-        }
+  successMessage.textContent = 'Đăng nhập thành công! Đang chuyển hướng...';
 
-        // Khởi tạo
-        document.addEventListener('DOMContentLoaded', function() {
-            // Focus vào email field khi trang load
-            document.getElementById('email').focus();
-            
-            // Thêm enter key support
-            document.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
-                    const form = e.target.closest('form');
-                    if (form) {
-                        form.dispatchEvent(new Event('submit'));
-                    }
-                }
-            });
-        });
+  setTimeout(() => {
+    if (user.role === 'admin') {
+      window.location.href = '/FE/src/pages/dashboard.html'; // Đường dẫn trang admin dashboard
+    } else if (user.role === 'customer') {
+      window.location.href = '/FE/src/pages/medicine_shopping.html'; // Đường dẫn trang khách hàng
+    } else {
+      errorMessage.textContent = 'Role người dùng không hợp lệ.';
+    }
+  }, 1500);
+});
 
-        // Demo data - có thể xóa trong production
-        console.log('Demo accounts:');
-        console.log('Email: jonas.kahnwald@gmail.com | Password: 123456');
-        console.log('Email: admin@msw.com | Password: admin123');
+// Simulate register process
+document.getElementById('registerFormElement').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const fullName = this.fullName.value.trim();
+  const dob = this.dob.value;
+  const email = this.email.value.trim();
+  const password = this.password.value.trim();
+  const confirmPassword = this.confirmPassword.value.trim();
+
+  const errorMessage = document.getElementById('registerErrorMessage');
+  const successMessage = document.getElementById('registerSuccessMessage');
+
+  errorMessage.textContent = '';
+  successMessage.textContent = '';
+
+  if (!fullName || !dob || !email || !password || !confirmPassword) {
+    errorMessage.textContent = 'Vui lòng nhập đầy đủ thông tin.';
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    errorMessage.textContent = 'Mật khẩu xác nhận không khớp.';
+    return;
+  }
+
+  // TODO: Gửi dữ liệu đăng ký lên backend
+  successMessage.textContent = 'Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.';
+  setTimeout(() => {
+    showLoginForm();
+  }, 2000);
+});
+
+// Google login/register placeholders
+function loginWithGoogle() {
+  alert('Chức năng đăng nhập với Google đang được phát triển.');
+}
+
+function registerWithGoogle() {
+  alert('Chức năng đăng ký với Google đang được phát triển.');
+}
+
+// Expose functions to global scope for inline onclick handlers
+window.togglePassword = togglePassword;
+window.toggleRegisterPassword = toggleRegisterPassword;
+window.toggleConfirmPassword = toggleConfirmPassword;
+window.showRegisterForm = showRegisterForm;
+window.showLoginForm = showLoginForm;
+window.loginWithGoogle = loginWithGoogle;
+window.registerWithGoogle = registerWithGoogle;
+
+// Initialize forms visibility
+document.addEventListener('DOMContentLoaded', () => {
+  showLoginForm();
+});
