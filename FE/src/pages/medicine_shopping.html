@@ -12,7 +12,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <i class="fas fa-pills"></i>
+                <img src="logo.png" alt="MediShop Logo" class="logo-img">
                 <h1>MediShop</h1>
             </div>
             
@@ -66,9 +66,40 @@
                 <div class="cart-items" id="cartItems">
                     <!-- Cart items will be loaded here -->
                 </div>
+                
+                <!-- Voucher Section -->
+                <div class="voucher-section">
+                    <div class="voucher-input-group">
+                        <input type="text" id="voucherInput" placeholder="Nhập mã giảm giá">
+                        <button id="applyVoucherBtn">Áp dụng</button>
+                    </div>
+                    <div class="voucher-message" id="voucherMessage"></div>
+                    <div class="voucher-applied" id="voucherApplied" style="display: none;">
+                        <div class="voucher-info">
+                            <i class="fas fa-tag"></i>
+                            <span id="appliedVoucherCode"></span>
+                            <span id="appliedVoucherDiscount"></span>
+                        </div>
+                        <button class="remove-voucher" id="removeVoucherBtn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="cart-footer">
-                    <div class="cart-total">
-                        <strong>Tổng cộng: <span id="cartTotal">0₫</span></strong>
+                    <div class="cart-summary">
+                        <div class="summary-row">
+                            <span>Tạm tính:</span>
+                            <span id="cartSubtotal">0₫</span>
+                        </div>
+                        <div class="summary-row discount" id="discountRow" style="display: none;">
+                            <span>Giảm giá:</span>
+                            <span id="cartDiscount">-0₫</span>
+                        </div>
+                        <div class="summary-row total">
+                            <strong>Tổng cộng:</strong>
+                            <strong id="cartTotal">0₫</strong>
+                        </div>
                     </div>
                     <button class="checkout-btn">Thanh toán</button>
                 </div>
